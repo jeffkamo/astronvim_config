@@ -1,3 +1,6 @@
+-- Change node version for copilot
+vim.g.copilot_node_command = "~/.nodenv/versions/v18.19.0/bin/node"
+
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -18,7 +21,9 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "astrodark",
+  -- colorscheme = "astrodark",
+  -- colorscheme = "dracula",
+  colorscheme = "tokyonight",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
