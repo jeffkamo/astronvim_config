@@ -1,8 +1,16 @@
 return {
-  "github/copilot.vim",
-  lazy = false,
-  config = function()
-    -- https://github.com/orgs/community/discussions/16800#discussioncomment-2848953
-    vim.g.copilot_node_command = "~/.nodenv/versions/14.17.0/bin/node"
-  end,
+  { 'zbirenbaum/copilot.lua',
+    config = function()
+      vim.defer_fn(function()
+        require('copilot').setup {
+          panel = { enabled = true, },
+          ft_disable = { "markdown" },
+          copilot_node_command = vim.fn.expand("$HOME") .. "/.nodenv/versions/18.19.0/bin/node",
+          plugin_manager_path = vim.fn.stdpath("data") .. "/site/pack/packer",
+          server_opts_overrides = {},
+        }
+      end, 100)
+    end,
+  },
+  { 'zbirenbaum/copilot-cmp', after = 'copilot.lua' }
 }
